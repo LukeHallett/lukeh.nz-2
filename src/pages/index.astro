@@ -1,11 +1,74 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Project from '../components/Project.astro';
+import Navbar from '../components/Navbar.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import renoReelImageOne from '../assets/projects/renoreel/1.png';
+import renoReelImageTwo from '../assets/projects/renoreel/2.png';
+import cartsyImageOne from '../assets/projects/cartsy/1.png';
+import cartsyImageTwo from '../assets/projects/cartsy/2.png';
+import cartsyImageThree from '../assets/projects/cartsy/3.png';
+import cartsyImageFour from '../assets/projects/cartsy/4.png';
+import cartsyImageFive from '../assets/projects/cartsy/5.png';
+import bbchImageOne from '../assets/projects/bbch/1.png';
+import tdImageOne from '../assets/projects/td/1.png';
 ---
 
 <Layout>
-	<Welcome />
+    <Navbar />
+
+    <div data-bs-spy="scroll" data-bs-target="#main-navbar" tabindex="0">
+        <div id="home" class="container col-xxl-8 px-4 py-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <img src="bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                </div>
+
+                <div class="col-lg-6">
+                    <h2 class="display-5 fw-bold lh-1">Hi, I'm</h2>
+                    <h1 class="display-4 fw-bold lh-1 mb-3">Luke Hallett</h1>
+                    <p class="lead">
+                        A final year student at the University of Canterbury, New Zealand studying towards a Bachelor's of Science, majoring in Computer Science.
+                    </p>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a class="btn btn-primary btn-lg px-4 me-md-2" href="#projects">Projects</a>
+                        <a class="btn btn-outline-secondary btn-lg px-4" href="mailto:hello@lukeh.nz">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="projects" class="container">
+            <h2 class="display-5 fw-bold mb-4">Projects</h2>
+
+            <Project
+                    name="RenoReel"
+                    tags={ ['Java', 'Spring Boot', 'Javascript', 'MariaDB', 'GitLab', 'CI/CD'] }
+                    description="A year-long group project for SENG302 at the University of Canterbury. Working in a group of 7, using Scrum to manage the project, developing a social media platform for house renovations."
+                    images={ [renoReelImageOne, renoReelImageTwo] }
+            />
+
+            <Project
+                    name="Cartsy"
+                    tags={ ['React Native', 'Typescript', 'MariaDB', 'Docker', 'Azure'] }
+                    description="A full-stack cross-platorm mobile application built with React Native. Cartsy helps users find the best deals on groceries by comparing prices across multiple supermarkets."
+                    images={ [cartsyImageOne, cartsyImageTwo, cartsyImageThree, cartsyImageFour, cartsyImageFive] }
+            />
+
+            <Project
+                    name="Bow Brickhill Community Hall"
+                    tags={ ['PHP', 'Laravel', 'MariaDB'] }
+                    description="Designing, developing, and maintaining a full-stack website and booking system for a local community hall."
+                    images={ [bbchImageOne] }
+            />
+
+            <Project
+                    name="Tower Dynasty"
+                    tags={ ['Java', 'JavaFX', 'Gradle'] }
+                    description="A game with a goal to maximise money gained by the end of a set amount of rounds by upgrading towers. Created as a software engineering project for SENG201 at the University of Canterbury with a partner."
+                    images={ [tdImageOne] }
+            />
+        </div>
+    </div>
 </Layout>

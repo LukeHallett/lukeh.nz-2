@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+    name: string,
+    tags: string[],
+    description: string,
+    images: ImageMetadata[]
+}
+
+const { name, tags, description, images } = Astro.props;
+
+const slug = name.toLowerCase().replace(/ /g, '-');
+---
+
+<div class="row p-4 align-items-center rounded-3 border shadow-lg mb-4">
+    <div class="col-12 col-md-6">
+        <h3>{ name }</h3>
+        <div class="mb-3">
+            { tags.map(tag =>
+                    <span class="badge text-bg-primary me-1">{ tag }</span>
+            ) }
+        </div>
+        <p class="mb-0">{ description }</p>
+    </div>
+
+    <div class="col-12 col-md-6">
+        <div id={slug} class="carousel slide">
+            <div class="carousel-inner" style="max-height: 400px;">
+                { images.map((image, i) =>
+                    <div class={ i === 0 ? 'carousel-item active' : 'carousel-item' }>
+                        <Image src={image} alt={name} class="d-block w-100 h-100 rounded" />
+                    </div>
+                ) }
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target={`#${slug}`} data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target={`#${slug}`} data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
